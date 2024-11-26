@@ -5,7 +5,7 @@
   env.GREET = "devenv";
 
   # https://devenv.sh/packages/
-  packages = [ pkgs.git pkgs.cudaPackages.cudatoolkit ];
+  packages = [ pkgs.cudaPackages.cudatoolkit pkgs.gcc12 ];
 
   # https://devenv.sh/languages/
   # languages.rust.enable = true;
@@ -23,7 +23,7 @@
 
   enterShell = ''
     hello
-    git --version
+    gcc --version
   '';
 
   # https://devenv.sh/tasks/
@@ -35,7 +35,7 @@
   # https://devenv.sh/tests/
   enterTest = ''
     echo "Running tests"
-    git --version | grep --color=auto "${pkgs.git.version}"
+    gcc --version
   '';
 
   # https://devenv.sh/pre-commit-hooks/
