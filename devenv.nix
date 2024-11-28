@@ -5,7 +5,7 @@
   env.GREET = "devenv";
 
   # https://devenv.sh/packages/
-  packages = [ pkgs.cudaPackages.cudatoolkit pkgs.cudaPackages.nsight_systems pkgs.gcc12 pkgs.libGLU pkgs.libGL];
+  packages = [ pkgs.cudaPackages.cudatoolkit pkgs.cudaPackages.nsight_systems pkgs.gcc12 ];
 
   # https://devenv.sh/languages/
   # languages.rust.enable = true;
