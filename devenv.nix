@@ -8,7 +8,7 @@ in
   env.GREET = "devenv";
 
   # https://devenv.sh/packages/
-  packages = [ pkgs.cudaPackages.cudatoolkit pkgs.cudaPackages.nsight_systems pkgs.gcc12 ];
+  packages = [ pkgs.cudaPackages.cudatoolkit pkgs.libGL pkgs.cudaPackages.nsight_systems pkgs.gcc12 ];
 
   # https://devenv.sh/languages/
   # languages.rust.enable = true;
@@ -20,6 +20,9 @@ in
   # services.postgres.enable = true;
 
   env = {
+    LD_LIBRARY_PATH = "${
+      lib.makeLibraryPath buildInputs
+    }:/run/opengl-driver/lib:/run/opengl-driver-32/lib";
     CUDA_PATH = pkgs.cudaPackages.cudatoolkit;
   };
 
