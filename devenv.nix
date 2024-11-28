@@ -1,5 +1,8 @@
 { pkgs, lib, config, inputs, ... }:
-
+let buildInputs = with pkgs; [
+  cudaPackages.cudatoolkit
+];
+in
 {
   # https://devenv.sh/basics/
   env.GREET = "devenv";
@@ -15,6 +18,10 @@
 
   # https://devenv.sh/services/
   # services.postgres.enable = true;
+
+  env = {
+    CUDA_PATH = pkgs.cudaPackages.cudatoolkit;
+  };
 
   # https://devenv.sh/scripts/
   scripts.hello.exec = ''
